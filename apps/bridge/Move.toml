@@ -1,0 +1,9 @@
+[package]
+name = "bridge"
+version = "0.0.1"
+
+[addresses]
+bridge = "_"
+
+[dependencies]
+layerzero = { local = "../../layerzero" }

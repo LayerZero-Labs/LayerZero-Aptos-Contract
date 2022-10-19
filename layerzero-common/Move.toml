@@ -1,0 +1,9 @@
+[package]
+name = "layerzero_common"
+version = "0.0.1"
+
+[addresses]
+layerzero_common = "_"
+
+[dependencies]
+AptosFramework = { local = "../deps/aptos-core/aptos-move/framework/aptos-framework" }

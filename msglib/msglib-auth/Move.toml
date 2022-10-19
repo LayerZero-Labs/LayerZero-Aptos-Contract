@@ -1,0 +1,9 @@
+[package]
+name = "msglib_auth"
+version = "0.0.1"
+
+[addresses]
+msglib_auth = "_"
+
+[dependencies]
+layerzero_common = { local = "../../layerzero-common" }

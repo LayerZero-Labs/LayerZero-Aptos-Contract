@@ -1,0 +1,17 @@
+[package]
+name = "layerzero"
+version = "0.0.1"
+
+[addresses]
+layerzero = "_"
+test = "0x8"
+lzapp = "0x9"
+
+[dependencies]
+layerzero_common = { local = "../layerzero-common" }
+zro = { local = "../zro" }
+msglib_auth = { local = "../msglib/msglib-auth" }
+msglib_v2 = { local = "../msglib/msglib-v2" }
+msglib_v1_1 = { local = "../msglib/msglib-v1/msglib-v1-1" }
+executor_auth = { local = "../executor/executor-auth" }
+executor_v2 = { local = "../executor/executor-v2" }

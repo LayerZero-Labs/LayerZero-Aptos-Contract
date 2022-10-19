@@ -1,0 +1,9 @@
+[package]
+name = "zro"
+version = "0.0.1"
+
+[addresses]
+zro = "_"
+
+[dependencies]
+MoveStdlib = { local = "../deps/aptos-core/aptos-move/framework/move-stdlib" }

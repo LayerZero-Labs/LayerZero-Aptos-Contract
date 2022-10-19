@@ -1,0 +1,9 @@
+[package]
+name = "counter"
+version = "0.0.1"
+
+[addresses]
+counter = "_"
+
+[dependencies]
+layerzero = { local = "../../layerzero" }

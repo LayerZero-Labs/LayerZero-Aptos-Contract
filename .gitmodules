@@ -1,0 +1,4 @@
+[submodule "deps/aptos-core"]
+	path = deps/aptos-core
+	url = https://github.com/aptos-labs/aptos-core.git
+	branch = testnet
