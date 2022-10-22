@@ -11,6 +11,9 @@
     "lint:fix": "prettier --write **.sol && prettier --write **.js && prettier --write **.ts",
     "test:forge": "forge test -vvv"
   },
+  "resolutions": {
+    "adm-zip": "0.5.2"
+  },
   "devDependencies": {
     "@layerzerolabs/d2-contracts": "^1.0.19",
     "@layerzerolabs/layerzero-core": "^0.0.42",
