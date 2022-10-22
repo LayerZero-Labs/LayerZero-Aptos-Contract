@@ -2,3 +2,6 @@
 	path = deps/aptos-core
 	url = https://github.com/aptos-labs/aptos-core.git
 	branch = testnet
+[submodule "apps/bridge-evm/lib/forge-std"]
+	path = apps/bridge-evm/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std

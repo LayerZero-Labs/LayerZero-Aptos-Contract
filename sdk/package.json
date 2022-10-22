@@ -1,0 +1,83 @@
+{
+  "name": "@layerzerolabs/lz-aptos",
+  "version": "1.0.2",
+  "description": "LayerZero Aptos Javascript API",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LayerZero-Labs/LayerZero-Aptos-Contract.git"
+  },
+  "keywords": [
+    "LayerZero",
+    "Aptos"
+  ],
+  "bugs": {
+    "url": "https://github.com/LayerZero-Labs/LayerZero-Aptos-Contract/issues"
+  },
+  "homepage": "https://github.com/LayerZero-Labs/LayerZero-Aptos-Contract#readme",
+  "files": [
+    "./dist/**/*"
+  ],
+  "bin": {
+    "lz-aptos-cli": "./cmd/lz-aptos-cli.ts"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.json",
+    "clean": "rimraf dist",
+    "format": "prettier --write \"./**/*.{ts,js,json,md}\"",
+    "format-check": "prettier --check \"./**/*.{ts,js,json,md}\"",
+    "lint": "eslint --ext .ts,.tsx src tests",
+    "lint:fix": "eslint --ext .ts,.tsx src tests --fix"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "@babel/preset-typescript": "^7.18.6",
+    "@types/expand-tilde": "^2.0.0",
+    "@types/glob": "^7.2.0",
+    "@types/globby": "^9.1.0",
+    "@types/jest": "^28.1.6",
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "@typescript-eslint/parser": "^5.37.0",
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^28.1.3",
+    "eslint": "^8.23.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "jest": "^28.1.3",
+    "jest-serial-runner": "^1.2.0",
+    "postinstall-postinstall": "^2.1.0",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^28.0.7",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@layerzerolabs/core-sdk": "^1.0.41-beta.37",
+    "@noble/hashes": "^1.1.2",
+    "@types/bn.js": "^5.1.0",
+    "@types/command-line-args": "^5.2.0",
+    "@types/command-line-usage": "^5.0.2",
+    "@types/node": "^18.8.2",
+    "aptos": "^1.3.14",
+    "bip39": "^3.0.4",
+    "bn.js": "^5.2.1",
+    "cli-ux": "^6.0.9",
+    "command-line-args": "^5.2.1",
+    "command-line-usage": "^6.1.3",
+    "commander": "^9.4.0",
+    "console-table-printer": "^2.11.1",
+    "cross-fetch": "^3.1.5",
+    "ethers": "^5.7.1",
+    "expand-tilde": "^2.0.2",
+    "extended-buffer": "^6.1.0",
+    "glob": "^8.0.3",
+    "tiny-invariant": "^1.2.0",
+    "ts-node": "^10.9.1",
+    "tweetnacl": "^1.0.3"
+  }
+}

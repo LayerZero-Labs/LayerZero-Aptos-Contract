@@ -1,0 +1,42 @@
+{
+  "name": "@layerzerolabs/bridge-evm-internal",
+  "version": "0.0.1",
+  "license": "BUSL-1.1",
+  "scripts": {
+    "build": "npx hardhat compile",
+    "test": "npx hardhat test --config ./hardhat.config.ts",
+    "dev": "npx hardhat node",
+    "coverage": "npx hardhat coverage --config hardhat-coverage.config.ts --solcoverjs ./config/.solcover.js",
+    "lint:check": "prettier --check **.sol && prettier --check **.js && prettier --check **.ts && hardhat compile --config hardhat.config.ts && npx solhint --config ./config/.solhint.json --ignore-path ./config/.solhintignore 'contracts/**/*.sol'",
+    "lint:fix": "prettier --write **.sol && prettier --write **.js && prettier --write **.ts",
+    "test:forge": "forge test -vvv"
+  },
+  "devDependencies": {
+    "@layerzerolabs/d2-contracts": "^1.0.19",
+    "@layerzerolabs/layerzero-core": "^0.0.42",
+    "@layerzerolabs/lz-sdk": "^0.0.5",
+    "@layerzerolabs/solidity-examples": "0.0.4",
+    "@nomiclabs/hardhat-ethers": "^2.0.6",
+    "@nomiclabs/hardhat-waffle": "^2.0.3",
+    "@openzeppelin/contracts": "^4.6.0",
+    "abi-decoder": "^2.4.0",
+    "dotenv": "^16.0.1",
+    "ethereum-waffle": "^3.4.4",
+    "hardhat": "2.8.3",
+    "hardhat-deploy": "^0.11.12",
+    "hardhat-deploy-ethers": "^0.3.0-beta.13",
+    "hardhat-gas-reporter": "^1.0.8",
+    "hardhat-spdx-license-identifier": "^2.0.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-solidity": "^1.0.0-beta.19",
+    "solhint": "^3.3.7",
+    "solidity-coverage": "^0.7.21",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "@layerzerolabs/core-sdk": "^1.0.41-beta.37",
+    "cli-ux": "^6.0.9",
+    "tiny-invariant": "^1.3.1"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "transform": {
+    "\\.[jt]sx?$": "babel-jest"
+  },
+  "transformIgnorePatterns": [
+    "/node_modules/(?!(globby|slash)/)"
+  ],
+  "testTimeout": 120000
+}
