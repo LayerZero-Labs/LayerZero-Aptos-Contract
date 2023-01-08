@@ -6,6 +6,7 @@ module counter::counter {
     use layerzero::endpoint::{Self, UaCapability};
     use layerzero::lzapp;
     use layerzero::remote;
+    use aptos_std::type_info;
 
     const ECOUNTER_ALREADY_CREATED: u64 = 0x00;
     const ECOUNTER_NOT_CREATED: u64 = 0x01;
@@ -65,6 +66,11 @@ module counter::counter {
 
     public entry fun lz_receive(chain_id: u64, src_address: vector<u8>, payload: vector<u8>) acquires Counter, Capabilities {
         lz_receive_internal(chain_id, src_address, payload);
+    }
+
+    public entry fun lz_receive_types(_src_chain_id: u64, _src_address: vector<u8>, _payload: vector<u8>) : vector<type_info::TypeInfo> {
+        let types = vector<type_info::TypeInfo>[type_info::type_of<CounterUA>()];
+        types
     }
 
     fun lz_receive_internal(src_chain_id: u64, src_address: vector<u8>, payload: vector<u8>): vector<u8> acquires Counter, Capabilities {
