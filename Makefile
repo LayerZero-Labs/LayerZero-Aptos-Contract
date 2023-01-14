@@ -27,8 +27,19 @@ test-counter:
 test-bridge:
 	cd apps/bridge && aptos move test --named-addresses layerzero_common=${layerzero_common},msglib_auth=${msglib_auth},zro=${zro},msglib_v1_1=${msglib_v1_1},msglib_v2=${msglib_v2},executor_auth=${executor_auth},executor_v2=${executor_v2},layerzero=${layerzero},bridge=0xBEAD
 
+test-layerzero-apps:
+	cd layerzero-apps && aptos move test --named-addresses layerzero_common=${layerzero_common},msglib_auth=${msglib_auth},zro=${zro},msglib_v1_1=${msglib_v1_1},msglib_v2=${msglib_v2},layerzero=${layerzero},executor_auth=${executor_auth},executor_v2=${executor_v2},layerzero_apps=${layerzero_apps}
 
-test: test-common test-layerzero test-oracle test-counter test-bridge
+test-oft:
+	cd apps/example/oft && aptos move test --named-addresses layerzero_common=${layerzero_common},msglib_auth=${msglib_auth},zro=${zro},msglib_v1_1=${msglib_v1_1},msglib_v2=${msglib_v2},executor_auth=${executor_auth},executor_v2=${executor_v2},layerzero=${layerzero},layerzero_apps=${layerzero_apps},oft=0xBEAD
+
+test-proxy-oft:
+	cd apps/example/proxy-oft && aptos move test --named-addresses layerzero_common=${layerzero_common},msglib_auth=${msglib_auth},zro=${zro},msglib_v1_1=${msglib_v1_1},msglib_v2=${msglib_v2},executor_auth=${executor_auth},executor_v2=${executor_v2},layerzero=${layerzero},layerzero_apps=${layerzero_apps},proxy_oft=0xBEAD
+
+test-executor-ext:
+	cd executor/executor-ext && aptos move test --named-addresses executor_ext=${executor_ext}
+
+test: test-common test-layerzero test-oracle test-counter test-bridge test-layerzero-apps test-oft test-proxy-oft test-executor-ext
 
 compile-common:
 	cd layerzero-common && aptos move compile --included-artifacts=${included_artifacts} --save-metadata --named-addresses layerzero_common=${layerzero_common}
@@ -54,6 +65,9 @@ compile-executor-auth:
 compile-executor-v2:
 	cd ./executor/executor-v2 && aptos move compile --included-artifacts=${included_artifacts} --save-metadata --named-addresses layerzero_common=${layerzero_common},executor_auth=${executor_auth},executor_v2=${executor_v2}
 
+compile-executor-ext:
+	cd ./executor/executor-ext && aptos move compile --included-artifacts=${included_artifacts} --save-metadata --named-addresses executor_ext=${executor_ext}
+
 compile-oracle:
 	cd apps/oracle && aptos move compile --included-artifacts=${included_artifacts} --save-metadata --named-addresses layerzero_common=${layerzero_common},msglib_auth=${msglib_auth},zro=${zro},msglib_v1_1=${msglib_v1_1},msglib_v2=${msglib_v2},executor_auth=${executor_auth},executor_v2=${executor_v2},layerzero=${layerzero},oracle=0xBEAD
 
@@ -63,7 +77,7 @@ compile-counter:
 compile-bridge:
 	cd apps/bridge && aptos move compile --included-artifacts=${included_artifacts} --save-metadata --named-addresses layerzero_common=${layerzero_common},msglib_auth=${msglib_auth},zro=${zro},msglib_v1_1=${msglib_v1_1},msglib_v2=${msglib_v2},executor_auth=${executor_auth},executor_v2=${executor_v2},layerzero=${layerzero},bridge=0xBEAD
 
-compile: compile-common compile-msglib-auth compile-zro compile-msglib-v1-1 compile-msglib-v2 compile-layerzero compile-counter compile-bridge compile-oracle compile-executor-v2 compile-executor-auth
+compile: compile-common compile-msglib-auth compile-zro compile-msglib-v1-1 compile-msglib-v2 compile-layerzero compile-counter compile-bridge compile-oracle compile-executor-v2 compile-executor-auth compile-executor-ext
 
 local-node:
 	@-pkill -f aptos

@@ -1,1 +1,0 @@
-NOTE: oft will not be audited in the scope of mainnet launch. we will audit this module individually

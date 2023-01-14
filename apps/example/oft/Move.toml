@@ -1,0 +1,9 @@
+[package]
+name = "oft"
+version = "0.0.1"
+
+[addresses]
+oft = "_"
+
+[dependencies]
+layerzero_apps = { local = "../../../layerzero-apps" }

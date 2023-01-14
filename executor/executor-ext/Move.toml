@@ -1,0 +1,9 @@
+[package]
+name = "executor_ext"
+version = "0.0.1"
+
+[addresses]
+executor_ext = "_"
+
+[dependencies]
+AptosFramework = { local = "../../deps/aptos-core/aptos-move/framework/aptos-framework" }

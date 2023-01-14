@@ -1,0 +1,9 @@
+[package]
+name = "proxy_oft"
+version = "0.0.1"
+
+[addresses]
+proxy_oft = "_"
+
+[dependencies]
+layerzero_apps = { local = "../../../layerzero-apps" }
