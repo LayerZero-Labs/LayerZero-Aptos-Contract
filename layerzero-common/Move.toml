@@ -5,5 +5,7 @@ version = "0.0.1"
 [addresses]
 layerzero_common = "_"
 
-[dependencies]
-AptosFramework = { local = "../deps/aptos-core/aptos-move/framework/aptos-framework" }
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-core.git"
+subdir = "aptos-move/framework/aptos-framework"
+rev = "895ae28e4a105430d8b9d2ce2f6e48c3b2c7fcf0"
