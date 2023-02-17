@@ -5,5 +5,7 @@ version = "0.0.1"
 [addresses]
 zro = "_"
 
-[dependencies]
-MoveStdlib = { local = "../deps/aptos-core/aptos-move/framework/move-stdlib" }
+[dependencies.MoveStdlib]
+git = "https://github.com/aptos-labs/aptos-core.git"
+subdir = "aptos-move/framework/move-stdlib"
+rev = "895ae28e4a105430d8b9d2ce2f6e48c3b2c7fcf0"
