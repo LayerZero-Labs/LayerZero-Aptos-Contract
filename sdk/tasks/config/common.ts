@@ -1,4 +1,4 @@
-import { ChainId, ChainStage } from "@layerzerolabs/core-sdk"
+import { ChainId, ChainStage } from "@layerzerolabs/lz-sdk"
 
 export type ConfigType = {
     msglib: {

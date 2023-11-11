@@ -1,4 +1,4 @@
-import { CHAIN_STAGE, ChainKey, ChainStage } from "@layerzerolabs/core-sdk"
+import { CHAIN_STAGE, ChainKey, ChainStage } from "@layerzerolabs/lz-sdk"
 import { getAccount, KeyType } from "../src/utils"
 import * as aptos from "aptos"
 import invariant from "tiny-invariant"

@@ -1,4 +1,4 @@
-import { ChainId, ChainStage } from "@layerzerolabs/core-sdk"
+import { ChainId, ChainStage } from "@layerzerolabs/lz-sdk"
 import { getConfig as SandboxConfig } from "./sandbox"
 import { getConfig as TestnetConfig } from "./testnet"
 import { getConfig as MainnetConfig } from "./mainnet"

@@ -4,7 +4,7 @@ import * as path from "path"
 import { BRIDGE_MODULES, compilePackage, getMetadataAndModules } from "../utils"
 import { FAUCET_URL, NODE_URL } from "../../src/constants"
 import { Environment } from "../../src/types"
-import { ChainStage } from "@layerzerolabs/core-sdk"
+import { ChainStage } from "@layerzerolabs/lz-sdk"
 
 export async function deployBridge(
     env: Environment,

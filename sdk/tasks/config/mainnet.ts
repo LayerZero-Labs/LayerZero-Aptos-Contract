@@ -1,5 +1,5 @@
 import { applyArbitrumMultiplier, ConfigType, DEFAULT_BLOCK_CONFIRMATIONS, EVM_ADDERSS_SIZE } from "./common"
-import { CHAIN_KEY, ChainId, ChainStage } from "@layerzerolabs/core-sdk"
+import { CHAIN_KEY, ChainId, ChainStage } from "@layerzerolabs/lz-sdk"
 import {
     BRIDGE_ADDRESS,
     EXECUTOR_ADDRESS,

@@ -1,5 +1,5 @@
 export * from "./deployBridge"
-export * from "./deployLayerZero"
+export * from "./deployLayerzero"
 export * from "./deployOracle"
 export * from "./deployCounter"
 export * from "./deployZro"

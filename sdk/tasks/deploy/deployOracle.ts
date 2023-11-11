@@ -6,7 +6,7 @@ import * as fs from "fs"
 import { Oracle } from "../../src/modules/apps/oracle"
 import { compilePackage, ORACLE_MODULES } from "../utils"
 import { Environment } from "../../src/types"
-import { ChainStage } from "@layerzerolabs/core-sdk"
+import { ChainStage } from "@layerzerolabs/lz-sdk"
 
 export async function deployOracle(
     env: Environment,

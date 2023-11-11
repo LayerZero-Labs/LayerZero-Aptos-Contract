@@ -1,6 +1,6 @@
 import * as commander from "commander"
 import { Environment } from "../src/types"
-import { ChainStage } from "@layerzerolabs/core-sdk"
+import { ChainStage } from "@layerzerolabs/lz-sdk"
 
 export const OPTION_PROMPT = new commander.Option("-p, --prompt <prompt>", "prompt for confirmation").default(true)
 
