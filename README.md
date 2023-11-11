@@ -36,6 +36,7 @@ aptos node run-local-testnet --force-restart --assume-yes --with-faucet
 then execute tests
 ```shell
 cd sdk
+npm install
 npx jest ./tests/omniCounter.test.ts
 npx jest ./tests/bridge.test.ts
 ```
