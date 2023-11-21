@@ -36,7 +36,7 @@ export const LAYERZERO_MODULES = [
     "endpoint.mv",
     "lzapp.mv",
     "remote.mv",
-    "oft.mv",
+    // "oft.mv",
     "uln_receive.mv",
 ]
 
