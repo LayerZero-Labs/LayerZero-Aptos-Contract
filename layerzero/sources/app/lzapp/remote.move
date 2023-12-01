@@ -2,7 +2,7 @@
 /// where the app only wants to send msg to and receive msg from.
 /// It only supports that there is only one trusted remote address on each chain.
 ///
-/// Remote is saparated from the lzApp because lzApp might have multiple remotes
+/// Remote is separated from the lzApp because lzApp might have multiple remotes
 module layerzero::remote {
     use std::error;
     use aptos_std::table::{Self, Table};
