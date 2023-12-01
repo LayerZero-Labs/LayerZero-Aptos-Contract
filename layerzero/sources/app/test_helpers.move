@@ -98,7 +98,7 @@ module layerzero::test_helpers {
         // init modules first as if we deployed
         msglib_config::init_module_for_test(lz);
         bulletin::init_module_for_test(lz);
-        // msgliv v1
+        // msglib v1
         uln_config::init_module_for_test(lz);
         msglib_v1_0::init_module_for_test(lz);
 
