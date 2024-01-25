@@ -3,7 +3,7 @@ import invariant from "tiny-invariant"
 import { Layerzero } from "./modules"
 import { applyGasLimitSafety, MultipleSignFunc, multiSigSignedBCSTxn } from "./utils"
 import { LAYERZERO_ADDRESS } from "./constants"
-import { ChainStage } from "@layerzerolabs/core-sdk"
+import { ChainStage } from "@layerzerolabs/lz-sdk"
 
 export * as utils from "./utils"
 export * as modules from "./modules"

@@ -1,6 +1,6 @@
 #!/usr/bin/env -S npx ts-node
 import * as commander from "commander"
-import { CHAIN_ID } from "@layerzerolabs/core-sdk"
+import { CHAIN_ID } from "@layerzerolabs/lz-sdk"
 import { wireAll } from "./wireAll"
 import { LzConfig, NETWORK_NAME } from "./config"
 import {

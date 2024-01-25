@@ -30,7 +30,7 @@ import {
 import * as _ from "lodash"
 import { findSecretKeyWithZeroPrefix } from "./utils"
 import { FAUCET_URL, NODE_URL } from "../src/constants"
-import { ChainStage } from "@layerzerolabs/core-sdk"
+import { ChainStage } from "@layerzerolabs/lz-sdk"
 
 const env = Environment.LOCAL
 

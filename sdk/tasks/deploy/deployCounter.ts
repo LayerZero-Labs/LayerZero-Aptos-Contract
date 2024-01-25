@@ -4,7 +4,7 @@ import * as layerzero from "../../src"
 import * as path from "path"
 import { compilePackage, COUNTER_MODULES, getMetadataAndModules } from "../utils"
 import { Environment } from "../../src/types"
-import { ChainStage } from "@layerzerolabs/core-sdk"
+import { ChainStage } from "@layerzerolabs/lz-sdk"
 
 export async function deployCounter(
     env: Environment,

@@ -1,4 +1,4 @@
-import { CHAIN_KEY, ChainId, ChainStage } from "@layerzerolabs/core-sdk"
+import { CHAIN_KEY, ChainId, ChainStage } from "@layerzerolabs/lz-sdk"
 import { evmBridgeAddresses, TOKEN_ADDRESSES } from "../../../apps/bridge-evm/tasks/config/addresses"
 import { applyArbitrumMultiplier, ConfigType, DEFAULT_BLOCK_CONFIRMATIONS, EVM_ADDERSS_SIZE } from "./common"
 import { CoinType } from "../../src/modules/apps/coin"

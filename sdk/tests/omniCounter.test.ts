@@ -27,7 +27,7 @@ import {
 import { getTestConfig } from "../tasks/config/local"
 import { findSecretKeyWithZeroPrefix } from "./utils"
 import { FAUCET_URL, NODE_URL } from "../src/constants"
-import { ChainStage } from "@layerzerolabs/core-sdk"
+import { ChainStage } from "@layerzerolabs/lz-sdk"
 
 const env = Environment.LOCAL
 

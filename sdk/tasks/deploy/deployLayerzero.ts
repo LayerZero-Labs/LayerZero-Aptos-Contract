@@ -56,3 +56,8 @@ export async function deployLayerzero(env: Environment, endpointId: number, acco
 
     console.log("Deployed Layerzero!!")
 }
+
+/*
+export async function deployLayerzero(env: Environment, endpointId: number, account: aptos.AptosAccount) {
+
+}*/

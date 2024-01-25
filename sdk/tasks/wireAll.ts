@@ -1,5 +1,5 @@
 import { ConfigType } from "./config"
-import { CHAIN_ID, ChainStage } from "@layerzerolabs/core-sdk"
+import { CHAIN_ID, ChainStage } from "@layerzerolabs/lz-sdk"
 import { FAUCET_URL, NODE_URL } from "../src/constants"
 import * as aptos from "aptos"
 import { Oracle } from "../src/modules/apps/oracle"

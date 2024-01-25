@@ -1,4 +1,4 @@
-import { ChainStage } from "@layerzerolabs/core-sdk"
+import { ChainStage } from "@layerzerolabs/lz-sdk"
 import { Environment } from "./types"
 
 export const NODE_URL: { [env in Environment]: string } = {
