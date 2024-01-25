@@ -45,6 +45,7 @@ The `msglib_params` is for passing parameters to the message libraries. So far, 
 If you want to know how much `AptosCoin` to pay for the message, you can call the Endpoint's `quote_fee()` to get the fee tuple (native_fee (in coin<AptosCoin>), layerzero_fee (in coin<ZRO>)).
 
 ```move
+#[view]
 public fun quote_fee(
     ua_address: address,
     dst_chain_id: u64,
@@ -82,6 +83,7 @@ So if your UA needs those types, you also need to provide a public entry functio
 NOTES: make sure to assert the provided types against the payload. For example, if the payload indicates coinType A, then the provided coinType must be A. 
 
 ```move
+#[view]
 public fun lz_receive_types(src_chain_id: u64, src_address: vector<u8>, payload: vector<u8>): vector<TypeInfo>
 ```
 

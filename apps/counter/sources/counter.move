@@ -60,6 +60,7 @@ module counter::counter {
         coin::deposit(signer_addr, refund);
     }
 
+    #[view]
     public fun quote_fee(dst_chain_id: u64, adapter_params: vector<u8>, pay_in_zro: bool): (u64, u64) {
         endpoint::quote_fee(@counter, dst_chain_id, vector::length(&COUNTER_PAYLOAD), pay_in_zro, adapter_params, vector::empty<u8>())
     }

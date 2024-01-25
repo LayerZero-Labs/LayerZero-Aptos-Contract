@@ -41,6 +41,7 @@ module proxy_oft::example_proxy_oft {
         oft::lz_receive<ExampleProxyOFT>(src_chain_id, src_address, payload)
     }
 
+    #[view]
     public fun lz_receive_types(_src_chain_id: u64, _src_address: vector<u8>, _payload: vector<u8>): vector<TypeInfo> {
         vector::empty<TypeInfo>()
     }
