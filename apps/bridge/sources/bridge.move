@@ -470,6 +470,7 @@ module bridge::coin_bridge {
     //
     // public view functions
     //
+    #[view]
     public fun lz_receive_types(src_chain_id: u64, _src_address: vector<u8>, payload: vector<u8>): vector<TypeInfo> acquires CoinTypeStore {
         let (remote_coin_addr, _receiver, _amount) = decode_receive_payload(&payload);
         let path = Path { remote_chain_id: src_chain_id, remote_coin_addr };
@@ -480,17 +481,40 @@ module bridge::coin_bridge {
         vector::singleton<TypeInfo>(*coin_type_info)
     }
 
+    #[view]
     public fun has_coin_registered<CoinType>(): bool {
         exists<CoinStore<CoinType>>(@bridge)
     }
 
+    #[view]
     public fun quote_fee(dst_chain_id: u64, pay_in_zro: bool, adapter_params: vector<u8>, msglib_params: vector<u8>): (u64, u64) {
         endpoint::quote_fee(@bridge, dst_chain_id, SEND_PAYLOAD_SIZE, pay_in_zro, adapter_params, msglib_params)
+    }
+
+    #[view]
+    public fun get_tvls_sd<CoinType>(): (vector<u64>, vector<u64>) acquires CoinStore {
+        assert_registered_coin<CoinType>();
+        let coin_store = borrow_global<CoinStore<CoinType>>(@bridge);
+        let tvls = vector::empty<u64>();
+        let i = 0;
+        while (i < vector::length(&coin_store.remote_chains)) {
+            let remote_chain_id = vector::borrow(&coin_store.remote_chains, i);
+            let remote_coin = table::borrow(&coin_store.remote_coins, *remote_chain_id);
+            vector::push_back(&mut tvls, remote_coin.tvl_sd);
+            i = i + 1;
+        };
+        (coin_store.remote_chains, tvls)
     }
 
     public fun remove_dust_ld<CoinType>(amount_ld: u64): u64 acquires CoinStore {
         let coin_store = borrow_global<CoinStore<CoinType>>(@bridge);
         amount_ld / coin_store.ld2sd_rate * coin_store.ld2sd_rate
+    }
+
+    public fun is_valid_remote_coin<CoinType>(remote_chain_id: u64, remote_coin_addr: vector<u8>): bool acquires CoinStore {
+        let coin_store = borrow_global<CoinStore<CoinType>>(@bridge);
+        let remote_coin = table::borrow(&coin_store.remote_coins, remote_chain_id);
+        remote_coin_addr == remote_coin.remote_address
     }
 
     //
@@ -585,7 +609,7 @@ module bridge::coin_bridge {
     }
 
     #[test_only]
-    fun build_receive_coin_payload(src_coin_addr: vector<u8>, receiver: vector<u8>, amount: u64): vector<u8> {
+    public fun build_receive_coin_payload(src_coin_addr: vector<u8>, receiver: vector<u8>, amount: u64): vector<u8> {
         let payload = vector::empty<u8>();
         serde::serialize_u8(&mut payload, 0); // packet type: receive
         serde::serialize_vector(&mut payload, src_coin_addr);
@@ -660,6 +684,11 @@ module bridge::coin_bridge {
         coin::destroy_mint_cap(mint_cap);
         coin::destroy_burn_cap(burn_cap);
         coin::destroy_freeze_cap(freeze_cap);
+    }
+
+    #[test_only]
+    public fun init_module_for_test(creator: &signer) {
+        init_module(creator);
     }
 
     #[test_only]
@@ -797,7 +826,7 @@ module bridge::coin_bridge {
     }
 
     #[test(aptos = @aptos_framework, core_resources = @core_resources, layerzero_root = @layerzero, msglib_auth_root = @msglib_auth, bridge_root = @bridge, oracle_root = @1234, relayer_root = @5678, executor_root = @1357, executor_auth_root = @executor_auth, alice = @0xABCD)]
-    #[expected_failure(abort_code = 0x10003)]
+    #[expected_failure(abort_code = 0x10003, location = Self)]
     public entry fun test_receive_with_invalid_cointype(aptos: &signer, core_resources: &signer, layerzero_root: &signer, msglib_auth_root: &signer, bridge_root: &signer, oracle_root: &signer, relayer_root: &signer, executor_root: &signer, executor_auth_root: &signer, alice: &signer) acquires EventStore, CoinStore, CoinTypeStore, Config, LzCapability {
         use layerzero::test_helpers;
         use layerzero_common::packet;
@@ -845,7 +874,7 @@ module bridge::coin_bridge {
     }
 
     #[test(aptos = @aptos_framework, core_resources = @core_resources, layerzero_root = @layerzero, msglib_auth_root = @msglib_auth, bridge_root = @bridge, oracle_root = @1234, relayer_root = @5678, executor_root = @1357, executor_auth_root = @executor_auth, alice = @0xABCD)]
-    #[expected_failure(abort_code = 0x50000)]
+    #[expected_failure(abort_code = 0x50000, location = Self)]
     public entry fun test_receive_unregistered_coin(aptos: &signer, core_resources: &signer, layerzero_root: &signer, msglib_auth_root: &signer, bridge_root: &signer, oracle_root: &signer, relayer_root: &signer, executor_root: &signer, executor_auth_root: &signer, alice: &signer) acquires EventStore, CoinStore, CoinTypeStore, Config, LzCapability {
         use layerzero::test_helpers;
         use layerzero_common::packet;
@@ -891,7 +920,7 @@ module bridge::coin_bridge {
     }
 
     #[test(aptos = @aptos_framework, core_resources = @core_resources, layerzero_root = @layerzero, msglib_auth_root = @msglib_auth, bridge_root = @bridge, oracle_root = @1234, relayer_root = @5678, executor_root = @1357, executor_auth_root = @executor_auth, alice = @0xABCD)]
-    #[expected_failure(abort_code = 0x60004)]
+    #[expected_failure(abort_code = 0x60004, location = Self)]
     public entry fun test_claminable_coin_not_found(aptos: &signer, core_resources: &signer, layerzero_root: &signer, msglib_auth_root: &signer, bridge_root: &signer, oracle_root: &signer, relayer_root: &signer, executor_root: &signer, executor_auth_root: &signer, alice: &signer) acquires EventStore, CoinStore, CoinTypeStore, Config {
         use layerzero::test_helpers;
 
@@ -920,7 +949,7 @@ module bridge::coin_bridge {
     }
 
     #[test(aptos = @aptos_framework, core_resources = @core_resources, layerzero_root = @layerzero, msglib_auth_root = @msglib_auth, bridge_root = @bridge, oracle_root = @1234, relayer_root = @5678, executor_root = @1357, executor_auth_root = @executor_auth, alice = @0xABCD)]
-    #[expected_failure(abort_code = 0x10006)]
+    #[expected_failure(abort_code = 0x10006, location = aptos_framework::coin)]
     public entry fun test_send_with_insufficient_balance(aptos: &signer, core_resources: &signer, layerzero_root: &signer, msglib_auth_root: &signer, bridge_root: &signer, oracle_root: &signer, relayer_root: &signer, executor_root: &signer, executor_auth_root: &signer, alice: &signer) acquires EventStore, CoinStore, CoinTypeStore, Config, LzCapability {
         use layerzero::test_helpers;
 

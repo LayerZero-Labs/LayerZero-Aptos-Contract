@@ -51,7 +51,7 @@ module layerzero_common::utils {
     }
 
     #[test]
-    #[expected_failure(abort_code = 0x10000)]
+    #[expected_failure(abort_code = 0x10000, location = Self)]
     fun test_vector_slice_with_invalid_index() {
         let vec = vector<u8>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         vector_slice<u8>(&vec, 2, 20);

@@ -98,7 +98,7 @@ module bridge::limiter {
     }
 
     #[test(aptos_framework = @aptos_framework, bridge = @bridge)]
-    #[expected_failure(abort_code = 0x20000)]
+    #[expected_failure(abort_code = 0x20000, location = Self)]
     fun test_limiter_overflow(aptos_framework: &signer, bridge: &signer) acquires Limiter {
         use aptos_framework::aptos_account;
         use std::signer;
@@ -116,7 +116,7 @@ module bridge::limiter {
     }
 
     #[test(aptos_framework = @aptos_framework, bridge = @bridge)]
-    #[expected_failure(abort_code = 0x20000)]
+    #[expected_failure(abort_code = 0x20000, location = Self)]
     fun test_limiter_overflow2(aptos_framework: &signer, bridge: &signer) acquires Limiter {
         use aptos_framework::aptos_account;
         use std::signer;
