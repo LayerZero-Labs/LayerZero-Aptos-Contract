@@ -1,4 +1,4 @@
-// managing layerzero admin priviledges.
+// managing layerzero admin privileges.
 // can transfer the admin account to new multi-sig or resources accounts
 module layerzero::admin {
     use std::error;

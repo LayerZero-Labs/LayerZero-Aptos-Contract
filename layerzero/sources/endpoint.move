@@ -271,13 +271,13 @@ module layerzero::endpoint {
         let version = msglib_cap::receive_version(cap);
         msglib_config::assert_receive_msglib(ua_address, src_chain_id, version);
 
-        // assert the packet is targetting at the UA
+        // assert the packet is targeting at the UA
         assert!(
             packet::dst_address(&packet) == bcs::to_bytes(&ua_address),
             error::invalid_argument(ELAYERZERO_INVALID_DST_ADDRESS),
         );
 
-        // assert the packet is targetting at this chain
+        // assert the packet is targeting at this chain
         assert!(
             packet::dst_chain_id(&packet) == get_local_chain_id(),
             error::invalid_argument(ELAYERZERO_INVALID_CHAIN_ID)
