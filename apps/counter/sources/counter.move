@@ -28,7 +28,10 @@ module counter::counter {
         lzapp::init(account, cap);
         remote::init(account);
 
+        let i:u64 = 0;
+
         move_to(account, Capabilities { cap });
+        move_to(account, Counter { i })
     }
 
     /// create_counter a `Counter` resource with value `i` under the given `account`
