@@ -28,7 +28,10 @@ module counter::counter {
         lzapp::init(account, cap);
         remote::init(account);
 
+        let i:u64 = 0;
+
         move_to(account, Capabilities { cap });
+        move_to(account, Counter { i })
     }
 
     /// create_counter a `Counter` resource with value `i` under the given `account`
@@ -69,7 +72,8 @@ module counter::counter {
         lz_receive_internal(chain_id, src_address, payload);
     }
 
-    public entry fun lz_receive_types(_src_chain_id: u64, _src_address: vector<u8>, _payload: vector<u8>) : vector<type_info::TypeInfo> {
+    #[view]
+    public fun lz_receive_types(_src_chain_id: u64, _src_address: vector<u8>, _payload: vector<u8>) : vector<type_info::TypeInfo> {
         vector::empty<type_info::TypeInfo>()
     }
 
