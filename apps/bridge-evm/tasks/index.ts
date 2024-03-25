@@ -15,10 +15,10 @@ task("mint", "", require("./mint")).addParam("t", "token type", "ETH").addParam(
 
 task("wireAll", "", require("./wireAll"))
     .addParam("e", "the environment ie: mainnet, testnet or sandbox", "sandbox")
-    .addOptionalParam("srcNetworks", "comma seperated list of networks to config on", "goerli-sandbox", types.string)
+    .addOptionalParam("srcNetworks", "comma separated list of networks to config on", "goerli-sandbox", types.string)
     .addParam("noPrompt", "no prompt", false, types.boolean)
 
 subtask("wireAllSubtask", "", require("./wireAll"))
     .addParam("e", "the environment ie: mainnet, testnet or sandbox", "sandbox")
-    .addParam("srcNetworks", "comma seperated list of networks to config on", "goerli-sandbox", types.string)
+    .addParam("srcNetworks", "comma separated list of networks to config on", "goerli-sandbox", types.string)
     .addParam("noPrompt", "no prompt", false, types.boolean)
