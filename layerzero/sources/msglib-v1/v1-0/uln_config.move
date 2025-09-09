@@ -289,7 +289,7 @@ module layerzero::uln_config {
     }
 
     #[test(lz = @layerzero)]
-    #[expected_failure(abort_code = 0x10004)]
+    #[expected_failure(abort_code = 0x10004, location = Self)]
     fun test_change_chain_address_size(lz: signer) acquires ChainConfig {
         setup(&lz);
         set_chain_address_size(&lz, 1, 20);
