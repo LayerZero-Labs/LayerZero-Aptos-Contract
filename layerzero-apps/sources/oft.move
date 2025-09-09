@@ -629,7 +629,7 @@ module layerzero_apps::oft {
     }
 
     #[test]
-    #[expected_failure(abort_code = 0x10000)]
+    #[expected_failure(abort_code = 0x10000, location = layerzero_common::utils)]
     fun test_decode_invalid_send_payload() {
         decode_send_payload(&x"00031234560000000000000001");
     }
