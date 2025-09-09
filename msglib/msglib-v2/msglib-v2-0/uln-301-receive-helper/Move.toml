@@ -1,0 +1,23 @@
+[package]
+name = "uln_301_receive_helper"
+version = "1.0.0"
+authors = []
+
+[addresses]
+uln_301_receive_helper = "_"
+
+uln_301 = "_"
+layerzero_common = "_"
+msglib_auth = "_"
+endpoint_v2_common = "_"
+packet_converter = "_"
+
+[dependencies]
+uln_301 = { local = "../uln-301" }
+layerzero = { local = "../../../../interfaces-mock/layerzero" }
+layerzero_common = { local = "../../../../interfaces-mock/layerzero-common" }
+msglib_auth = { local = "../../../../interfaces-mock/msglib-auth" }
+endpoint_v2_common = { local = "../../../../../../../layerzero-v2/aptos/contracts/endpoint_v2_common" }
+packet_converter = { local = "../../../msglib-utils/packet-converter" }
+
+[dev-dependencies] 

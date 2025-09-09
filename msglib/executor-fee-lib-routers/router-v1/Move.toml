@@ -1,0 +1,10 @@
+[package]
+name = "executor_fee_lib_router_v1"
+version = "1.0.0"
+
+[addresses]
+executor_fee_lib_router_v1 = "_"
+executor_fee_lib_router_v2 = "_"
+
+[dependencies]
+executor_fee_lib_router_v2 = { local = "../router-v2" }

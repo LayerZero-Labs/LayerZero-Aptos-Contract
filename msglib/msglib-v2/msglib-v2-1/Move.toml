@@ -1,12 +1,12 @@
 [package]
-name = "msglib_v1_1"
+name = "msglib_v2_1"
 version = "0.0.1"
 
 [addresses]
-msglib_v1_1 = "_"
-layerzero_common="_"
-msglib_auth="_"
-zro="_"
+msglib_v2_1 = "_"
+layerzero_common = "_"
+msglib_auth = "_"
+zro = "_"
 
 [dependencies]
 layerzero_common = { local = "../../../layerzero-common" }

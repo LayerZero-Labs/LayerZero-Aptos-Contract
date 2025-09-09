@@ -1,0 +1,15 @@
+[package]
+name = "msglib_routing_helper"
+version = "0.0.1"
+
+[addresses]
+msglib_routing_helper = "_"
+layerzero = "_"
+msglib_v2 = "_"
+
+[dependencies]
+layerzero = { local = "../../../../layerzero" }
+msglib_v2 = { local = "../msglib-v2-router" }
+
+[dev-dependencies]
+layerzero_common = { local = "../../../../layerzero-common" }

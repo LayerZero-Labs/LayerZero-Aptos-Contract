@@ -1,0 +1,10 @@
+[package]
+name = "fa_converter"
+version = "0.0.1"
+authors = []
+
+[addresses]
+fa_converter = "_"
+
+[dependencies]
+endpoint_v2_common = { local = "../../../../../../layerzero-v2/aptos/contracts/endpoint_v2_common" }

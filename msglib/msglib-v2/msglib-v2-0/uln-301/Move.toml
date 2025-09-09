@@ -1,0 +1,40 @@
+[package]
+name = "uln_301"
+version = "1.0.0"
+authors = []
+
+[addresses]
+uln_301 = "_"
+
+executor_fee_lib_router_v1 = "_"
+
+# endpoint v1
+layerzero_common = "_"
+zro = "_"
+msglib_auth = "_"
+
+# endpoint v2
+fa_converter = "_"
+packet_converter = "_"
+endpoint_v2_common = "_"
+msglib_types = "_"
+treasury = '_'
+dvn_fee_lib_router_0 = '_'
+dvn_fee_lib_0 = '_'
+
+[dependencies]
+msglib_types = { local = "../../../../../../../layerzero-v2/aptos/contracts/msglib/msglib_types" }
+endpoint_v2_common = { local = "../../../../../../../layerzero-v2/aptos/contracts/endpoint_v2_common" }
+treasury = { local = "../../../../../../../layerzero-v2/aptos/contracts/treasury" }
+dvn_fee_lib_router_0 = { local = "../../../../../../../layerzero-v2/aptos/contracts/worker_peripherals/fee_lib_routers/dvn_fee_lib_router_0" }
+
+layerzero_common = { local = "../../../../interfaces-mock/layerzero-common" }
+zro = { local = "../../../../interfaces-mock/zro" }
+msglib_auth = { local = "../../../../interfaces-mock/msglib-auth" }
+
+fa_converter = { local = "../../../msglib-utils/fa-converter" }
+packet_converter = { local = "../../../msglib-utils/packet-converter" }
+
+executor_fee_lib_router_v1 = { local = "../../../executor-fee-lib-routers/router-v1" }
+
+[dev-dependencies] 

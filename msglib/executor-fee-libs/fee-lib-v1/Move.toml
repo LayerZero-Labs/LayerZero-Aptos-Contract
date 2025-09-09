@@ -1,0 +1,17 @@
+[package]
+name = "executor_fee_lib_v1"
+version = "1.0.0"
+
+[addresses]
+executor_fee_lib_v1 = "_"
+uln_301 = "_"
+
+[dev-addresses]
+
+
+[dependencies]
+executor_fee_lib_0 = { local = "../../../../../../layerzero-v2/aptos/contracts/worker_peripherals/fee_libs/executor_fee_lib_0" }
+worker_common = { local = "../../../../../../layerzero-v2/aptos/contracts/worker_peripherals/worker_common" }
+price_feed_router_0 = { local = "../../../../../../layerzero-v2/aptos/contracts/worker_peripherals/price_feed_routers/price_feed_router_0" }
+msglib_types = { local = "../../../../../../layerzero-v2/aptos/contracts/msglib/msglib_types" }
+endpoint_v2_common = { local = "../../../../../../layerzero-v2/aptos/contracts/endpoint_v2_common" }

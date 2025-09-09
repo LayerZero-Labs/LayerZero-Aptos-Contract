@@ -1,0 +1,14 @@
+[package]
+name = "packet_converter"
+version = "0.0.1"
+authors = []
+
+[addresses]
+packet_converter = "_"
+layerzero_common = "_"
+endpoint_v2_common = "_"
+
+[dependencies]
+layerzero_common = { local = "../../../interfaces-mock/layerzero-common" }
+
+endpoint_v2_common = { local = "../../../../../../layerzero-v2/aptos/contracts/endpoint_v2_common" }
