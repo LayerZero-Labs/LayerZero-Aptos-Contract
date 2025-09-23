@@ -9,7 +9,7 @@ layerzero_common = "_"
 endpoint_v2_common = "_"
 
 [dependencies]
-layerzero_common = { local = "../../../layerzero-common" }
+layerzero_common = { local = "../../../interfaces-mock/layerzero-common" }
 
 endpoint_v2_common = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/endpoint_v2_common" }
 
