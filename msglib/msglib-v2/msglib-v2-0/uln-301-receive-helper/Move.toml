@@ -14,9 +14,9 @@ packet_converter = "_"
 
 [dependencies]
 uln_301 = { local = "../uln-301" }
-layerzero = { local = "../../../../interfaces-mock/layerzero" }
-layerzero_common = { local = "../../../../interfaces-mock/layerzero-common" }
-msglib_auth = { local = "../../../../interfaces-mock/msglib-auth" }
+layerzero = { local = "../../../../layerzero" }
+layerzero_common = { local = "../../../../layerzero-common" }
+msglib_auth = { local = "../../../msglib-auth" }
 endpoint_v2_common = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/endpoint_v2_common" }
 packet_converter = { local = "../../../msglib-utils/packet-converter" }
 

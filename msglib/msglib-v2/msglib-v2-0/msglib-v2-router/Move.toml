@@ -19,4 +19,4 @@ zro = { local = "../../../../zro" }
 msglib_v2_1 = { local = "../../msglib-v2-1" }
 msglib_v3 = { local = "../../../msglib-v3" }
 
-uln_301 = { local = "../../../../interfaces-mock/uln-301-epv1" }
+uln_301 = { local = "../uln-301" }

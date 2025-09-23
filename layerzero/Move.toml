@@ -21,4 +21,4 @@ msglib_auth = { local = "../msglib/msglib-auth" }
 msglib_v2 = { local = "../msglib/msglib-v2/msglib-v2-0/msglib-v2-router" }
 msglib_v1_1 = { local = "../msglib/msglib-v1/msglib-v1-1" }
 executor_auth = { local = "../executor/executor-auth" }
-executor_v2 = { local = "../interfaces-mock/executor-v2" }
+executor_v2 = { local = "../executor/executor-v2" }
