@@ -1,0 +1,12 @@
+[package]
+name = "executor_auth"
+version = "0.0.1"
+
+[addresses]
+executor_auth = "_"
+
+[dependencies.AptosFramework]
+# This can be used to build EndpointV2-related contracts, with the github rev matching that in endpoint_v2_common.
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "2c995bf668b2233825dde26137c3d1b076e99c22"
+subdir = "aptos-framework"
