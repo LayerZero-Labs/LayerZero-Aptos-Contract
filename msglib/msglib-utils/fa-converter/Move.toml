@@ -7,4 +7,4 @@ authors = []
 fa_converter = "_"
 
 [dependencies]
-endpoint_v2_common = { local = "../../../../../../layerzero-v2/aptos/contracts/endpoint_v2_common" }
+endpoint_v2_common = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/endpoint_v2_common" }

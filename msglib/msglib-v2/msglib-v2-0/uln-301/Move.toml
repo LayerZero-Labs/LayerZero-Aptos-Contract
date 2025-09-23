@@ -23,10 +23,11 @@ dvn_fee_lib_router_0 = '_'
 dvn_fee_lib_0 = '_'
 
 [dependencies]
-msglib_types = { local = "../../../../../../../layerzero-v2/aptos/contracts/msglib/msglib_types" }
-endpoint_v2_common = { local = "../../../../../../../layerzero-v2/aptos/contracts/endpoint_v2_common" }
-treasury = { local = "../../../../../../../layerzero-v2/aptos/contracts/treasury" }
-dvn_fee_lib_router_0 = { local = "../../../../../../../layerzero-v2/aptos/contracts/worker_peripherals/fee_lib_routers/dvn_fee_lib_router_0" }
+msglib_types = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/msglib/msglib_types" }
+endpoint_v2_common = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/endpoint_v2_common" }
+treasury = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/treasury" }
+dvn_fee_lib_router_0 = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/worker_peripherals/fee_lib_routers/dvn_fee_lib_router_0" }
+dvn_fee_lib_0 = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/worker_peripherals/fee_libs/dvn_fee_lib_0" }
 
 layerzero_common = { local = "../../../../interfaces-mock/layerzero-common" }
 zro = { local = "../../../../interfaces-mock/zro" }

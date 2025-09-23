@@ -10,8 +10,8 @@ uln_301 = "_"
 
 
 [dependencies]
-executor_fee_lib_0 = { local = "../../../../../../layerzero-v2/aptos/contracts/worker_peripherals/fee_libs/executor_fee_lib_0" }
-worker_common = { local = "../../../../../../layerzero-v2/aptos/contracts/worker_peripherals/worker_common" }
-price_feed_router_0 = { local = "../../../../../../layerzero-v2/aptos/contracts/worker_peripherals/price_feed_routers/price_feed_router_0" }
-msglib_types = { local = "../../../../../../layerzero-v2/aptos/contracts/msglib/msglib_types" }
-endpoint_v2_common = { local = "../../../../../../layerzero-v2/aptos/contracts/endpoint_v2_common" }
+executor_fee_lib_0 = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/worker_peripherals/fee_libs/executor_fee_lib_0" }
+worker_common = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/worker_peripherals/worker_common" }
+price_feed_router_0 = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/worker_peripherals/price_feed_routers/price_feed_router_0" }
+msglib_types = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/msglib/msglib_types" }
+endpoint_v2_common = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/endpoint_v2_common" }
