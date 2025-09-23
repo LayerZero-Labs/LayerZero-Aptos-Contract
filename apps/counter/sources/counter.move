@@ -3,16 +3,20 @@ module counter::counter {
     use aptos_framework::coin::Self;
     use aptos_framework::aptos_coin::AptosCoin;
     use std::vector;
+    use aptos_std::type_info;
+
+    use layerzero_common::semver;
     use layerzero::endpoint::{Self, UaCapability};
+    use layerzero_view::endpoint_view;
     use layerzero::lzapp;
     use layerzero::remote;
-    use aptos_std::type_info;
+    use layerzero::msglib_config;
 
     const ECOUNTER_ALREADY_CREATED: u64 = 0x00;
     const ECOUNTER_NOT_CREATED: u64 = 0x01;
     const ECOUNTER_UNTRUSTED_ADDRESS: u64 = 0x02;
 
-    const COUNTER_PAYLOAD: vector<u8> = vector<u8>[1, 2, 3, 4];
+    const COUNTER_PAYLOAD: vector<u8> = vector<u8>[1, 0, 0, 195, 88];
 
     struct CounterUA {}
 
@@ -29,16 +33,13 @@ module counter::counter {
         remote::init(account);
 
         move_to(account, Capabilities { cap });
+        move_to(account, Counter { i: 0 })
     }
 
-    /// create_counter a `Counter` resource with value `i` under the given `account`
-    public entry fun create_counter(account: &signer, i: u64) {
-        move_to(account, Counter { i })
-    }
-
+    #[view]
     /// Read the value in the `Counter` resource stored at `addr`
-    public fun get_count(addr: address): u64 acquires Counter {
-        borrow_global<Counter>(addr).i
+    public fun get_count(): u64 acquires Counter {
+        borrow_global<Counter>(@counter).i
     }
 
     //
@@ -49,27 +50,30 @@ module counter::counter {
         chain_id: u64,
         fee: u64,
         adapter_params: vector<u8>,
+        msglib_params: vector<u8>,
     ) acquires Capabilities {
         let fee_in_coin = coin::withdraw<AptosCoin>(account, fee);
         let signer_addr = signer::address_of(account);
 
-        let cap = borrow_global<Capabilities>(signer_addr);
+        let cap = borrow_global<Capabilities>(@counter);
         let dst_address = remote::get(@counter, chain_id);
-        let (_, refund) = lzapp::send<CounterUA>(chain_id, dst_address, COUNTER_PAYLOAD, fee_in_coin, adapter_params, vector::empty<u8>(), &cap.cap);
+
+        let (_, refund) = lzapp::send<CounterUA>(chain_id, dst_address, COUNTER_PAYLOAD, fee_in_coin, adapter_params, msglib_params, &cap.cap);
 
         coin::deposit(signer_addr, refund);
     }
 
     #[view]
-    public fun quote_fee(dst_chain_id: u64, adapter_params: vector<u8>, pay_in_zro: bool): (u64, u64) {
-        endpoint::quote_fee(@counter, dst_chain_id, vector::length(&COUNTER_PAYLOAD), pay_in_zro, adapter_params, vector::empty<u8>())
+    public fun quote_fee(dst_chain_id: u64, adapter_params: vector<u8>, msglib_params: vector<u8>, pay_in_zro: bool): (u64, u64) {
+        endpoint_view::quote_fee(@counter, dst_chain_id, vector::length(&COUNTER_PAYLOAD), pay_in_zro, adapter_params, msglib_params)
     }
 
     public entry fun lz_receive(chain_id: u64, src_address: vector<u8>, payload: vector<u8>) acquires Counter, Capabilities {
         lz_receive_internal(chain_id, src_address, payload);
     }
 
-    public entry fun lz_receive_types(_src_chain_id: u64, _src_address: vector<u8>, _payload: vector<u8>) : vector<type_info::TypeInfo> {
+    #[view]
+    public fun lz_receive_types(_src_chain_id: u64, _src_address: vector<u8>, _payload: vector<u8>): vector<type_info::TypeInfo> {
         vector::empty<type_info::TypeInfo>()
     }
 
@@ -92,6 +96,12 @@ module counter::counter {
 
         let c_ref = &mut borrow_global_mut<Counter>(@counter).i;
         *c_ref = *c_ref + 1;
+    }
+
+    #[view]
+    public fun is_send_by_uln301(dst_chain_id: u64): bool {
+        let send_version = msglib_config::get_send_msglib(@counter, dst_chain_id);
+        semver::major(&send_version) == 2
     }
 
     #[test_only]
@@ -155,9 +165,6 @@ module counter::counter {
         // assumes layerzero is already initialized
         init_module(counter_root);
 
-        // register the counter app
-        create_counter(counter_root, 0);
-
         let src_address = @counter;
         let src_address_bytes = bcs::to_bytes(&src_address);
 
@@ -165,8 +172,7 @@ module counter::counter {
         let dst_address_bytes = bcs::to_bytes(&dst_address);
 
         remote::set(counter_root, dst_chain_id, dst_address_bytes);
-        let addr = counter_addr; //loopback
-        assert!(get_count(addr) == 0, 0);
+        assert!(get_count() == 0, 0);
 
         let confirmations_bytes = vector::empty();
         serde::serialize_u64(&mut confirmations_bytes, 20);
@@ -179,9 +185,10 @@ module counter::counter {
 
         // counter send - receive flow
         let adapter_params = vector::empty();
-        let (fee, _) = quote_fee(dst_chain_id, adapter_params, false);
-        assert!(fee == 10 + 100 + 1 * 4 + 1, 0); // oracle fee + relayer fee + treasury fee
-        send_to_remote(counter_root, dst_chain_id, fee, adapter_params);
+        let msglib_params = vector::empty<u8>();
+        let (fee, _) = quote_fee(dst_chain_id, adapter_params, msglib_params, false);
+        assert!(fee == 10 + 100 + 1 * 5 + 1, 0); // oracle fee + relayer fee + treasury fee
+        send_to_remote(counter_root, dst_chain_id, fee, adapter_params, msglib_params);
 
         // oracle and relayer submission
         let confirmation: u64 = 77;
@@ -194,7 +201,7 @@ module counter::counter {
         // receive from remote
         let p = lz_receive_internal(dst_chain_id, dst_address_bytes, payload);
         assert!(p == vector<u8>[1, 2, 3, 4], 0);
-        assert!(get_count(addr) == 1, 0);
+        assert!(get_count() == 1, 0);
     }
 
     #[test(aptos = @aptos_framework, core_resources = @core_resources, layerzero_root = @layerzero, msglib_auth_root = @msglib_auth, counter_root = @counter, oracle_root = @1234, relayer_root = @5678, executor_root = @1357, executor_auth_root = @executor_auth)]
@@ -221,9 +228,7 @@ module counter::counter {
         // assumes layerzero is already initialized
         init_module(counter_root);
 
-        // register the counter app
-        create_counter(counter_root, 0);
-
+        let src_address = @counter;
         let src_address = @counter;
         let src_address_bytes = bcs::to_bytes(&src_address);
 
@@ -250,6 +255,6 @@ module counter::counter {
         assert!(lzapp::has_stored_payload(counter_addr, dst_chain_id, dst_address_bytes, nonce), 0);
         retry_payload(src_chain_id, src_address_bytes, nonce, payload);
 
-        assert!(get_count(dst_address) == 1, 0);
+        assert!(get_count() == 1, 0);
     }
 }
