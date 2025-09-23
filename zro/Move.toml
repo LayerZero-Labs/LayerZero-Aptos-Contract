@@ -6,4 +6,4 @@ version = "0.0.1"
 zro = "_"
 
 [dependencies]
-AptosFramework = { git = "https://github.com/aptos-labs/aptos-framework.git", subdir = "aptos-framework", rev = "2c995bf668b2233825dde26137c3d1b076e99c22" }
+AptosFramework = { git = "https://github.com/aptos-labs/aptos-core.git", subdir = "aptos-move/framework/aptos-framework", rev = "6f83bc6d02207298b2dee91133d75538789bf582"}
