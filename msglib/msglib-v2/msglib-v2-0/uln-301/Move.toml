@@ -38,4 +38,6 @@ packet_converter = { local = "../../../msglib-utils/packet-converter" }
 
 executor_fee_lib_router_v1 = { local = "../../../executor-fee-lib-routers/router-v1" }
 
+AptosFramework = { git = "https://github.com/aptos-labs/aptos-framework.git", subdir = "aptos-framework", rev = "2c995bf668b2233825dde26137c3d1b076e99c22" }
+
 [dev-dependencies] 

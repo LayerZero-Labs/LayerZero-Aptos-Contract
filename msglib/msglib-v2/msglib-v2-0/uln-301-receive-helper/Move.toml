@@ -19,5 +19,6 @@ layerzero_common = { local = "../../../../layerzero-common" }
 msglib_auth = { local = "../../../msglib-auth" }
 endpoint_v2_common = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/endpoint_v2_common" }
 packet_converter = { local = "../../../msglib-utils/packet-converter" }
+AptosFramework = { git = "https://github.com/aptos-labs/aptos-framework.git", subdir = "aptos-framework", rev = "2c995bf668b2233825dde26137c3d1b076e99c22" }
 
 [dev-dependencies] 

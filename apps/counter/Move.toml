@@ -6,6 +6,6 @@ version = "0.0.1"
 counter = "_"
 
 [dependencies]
-layerzero = { local = "../../../../../../packages/layerzero-v1/aptos/contracts/layerzero" }
-layerzero_common = { local = "../../../../../../packages/layerzero-v1/aptos/contracts/layerzero-common" }
-layerzero_view = { local = "../../../../../../packages/layerzero-v1/aptos/contracts/layerzero-view" }
+layerzero = { local = "../../layerzero" }
+layerzero_common = { local = "../../layerzero-common" }
+layerzero_view = { local = "../../layerzero-view" }
