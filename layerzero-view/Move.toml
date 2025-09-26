@@ -1,0 +1,10 @@
+[package]
+name = "layerzero_view"
+version = "0.0.1"
+
+[addresses]
+layerzero_view = '_'
+layerzero = "_"
+
+[dependencies]
+layerzero = { local = "../layerzero" }

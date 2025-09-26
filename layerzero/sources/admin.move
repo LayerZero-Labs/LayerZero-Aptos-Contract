@@ -43,7 +43,7 @@ module layerzero::admin {
     }
 
     #[test(lz = @layerzero, alice = @1234)]
-    #[expected_failure(abort_code = 0x50000)]
+    #[expected_failure(abort_code = 0x50000, location = Self)]
     fun test_set_by_non_admin(lz: &signer, alice: &signer) acquires Config {
         init_module(lz);
 
@@ -62,7 +62,7 @@ module layerzero::admin {
     }
 
     #[test(lz = @layerzero, alice = @1234)]
-    #[expected_failure(abort_code = 0x50000)]
+    #[expected_failure(abort_code = 0x50000, location = Self)]
     fun test_assert_not_admin(lz: &signer, alice: &signer) acquires Config {
         init_module(lz);
 

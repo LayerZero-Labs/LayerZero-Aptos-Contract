@@ -210,7 +210,7 @@ module layerzero::executor_config {
     }
 
     #[test(lz = @layerzero, ua = @test)]
-    #[expected_failure(abort_code = 0x80000)]
+    #[expected_failure(abort_code = 0x80000, location = Self)]
     fun test_reregister_executor(lz: &signer, ua: &signer)  acquires ExecutorRegistry, EventStore {
         setup(lz, ua);
         register_executor<TestExecutorV1>(3);
@@ -235,21 +235,21 @@ module layerzero::executor_config {
     }
 
     #[test(lz = @layerzero, ua = @test)]
-    #[expected_failure(abort_code = 0x10001)]
+    #[expected_failure(abort_code = 0x10001, location = Self)]
     fun test_set_default_executor_to_default_version(lz: &signer, ua: &signer) acquires ConfigStore, ExecutorRegistry, EventStore {
         setup(lz, ua);
         set_default_executor(lz, 1, DEFAULT_VERSION, @0x01);
     }
 
     #[test(lz = @layerzero, ua = @test)]
-    #[expected_failure(abort_code = 0x10001)]
+    #[expected_failure(abort_code = 0x10001, location = Self)]
     fun test_set_default_executor_to_invalid_version(lz: &signer, ua: &signer) acquires ConfigStore, ExecutorRegistry, EventStore {
         setup(lz, ua);
         set_default_executor(lz, 1, 3, @0x01);
     }
 
     #[test(lz = @layerzero, ua = @test)]
-    #[expected_failure(abort_code = 0x10002)]
+    #[expected_failure(abort_code = 0x10002, location = Self)]
     fun test_unset_default_executor(lz: signer, ua: signer) acquires ConfigStore, ExecutorRegistry, EventStore {
         setup(&lz, &ua);
         get_executor(type_address<TestUa>(), 1); // fail to get executor for default one unset
@@ -284,7 +284,7 @@ module layerzero::executor_config {
     }
 
     #[test(lz = @layerzero, ua = @test)]
-    #[expected_failure(abort_code = 0x10001)]
+    #[expected_failure(abort_code = 0x10001, location = Self)]
     fun test_ua_set_msglib_to_invalid_version(lz: signer, ua: signer) acquires ConfigStore, ExecutorRegistry, EventStore {
         setup(&lz, &ua);
         set_executor<TestUa>(1, 3, @0x01);

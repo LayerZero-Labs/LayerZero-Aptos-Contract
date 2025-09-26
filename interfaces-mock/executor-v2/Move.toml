@@ -1,0 +1,13 @@
+[package]
+name = "executor_v2"
+version = "0.0.1"
+
+[addresses]
+executor_v2 = "_"
+
+layerzero_common = "_"
+executor_auth = "_"
+
+[dependencies]
+layerzero_common = { local = "../../layerzero-common" }
+executor_auth = { local = "../../executor/executor-auth" }

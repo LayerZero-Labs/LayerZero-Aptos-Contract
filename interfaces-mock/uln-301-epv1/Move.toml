@@ -1,0 +1,13 @@
+[package]
+name = "uln_301"
+version = "1.0.0"
+authors = []
+
+[addresses]
+uln_301 = "_"
+
+[dependencies]
+# This can be used to build EndpointV1-related contracts only.
+layerzero_common = { local = "../../layerzero-common" }
+zro = { local = "../../zro" }
+msglib_auth = { local = "../../msglib/msglib-auth" }

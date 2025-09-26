@@ -1,0 +1,14 @@
+[package]
+name = "msglib_auth"
+version = "0.0.1"
+
+[addresses]
+msglib_auth = "_"
+
+[dev-addresses]
+layerzero_common = '0x100'
+msglib_auth = '0x101'
+
+[dependencies]
+# This can be used to build EndpointV2-related contracts only
+layerzero_common = { local = "../layerzero-common" }

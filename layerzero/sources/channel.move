@@ -256,7 +256,7 @@ module layerzero::channel {
     }
 
     #[test(lz = @layerzero)]
-    #[expected_failure(abort_code = 0x10000)]
+    #[expected_failure(abort_code = 0x10000, location = Self)]
     fun test_receive_with_outdated_nonce(lz: signer) acquires Channels, EventStore {
         setup(&lz);
 
@@ -273,7 +273,7 @@ module layerzero::channel {
     }
 
     #[test(lz = @layerzero)]
-    #[expected_failure(abort_code = 0x60000)]
+    #[expected_failure(abort_code = 0x60000, location = Self)]
     fun test_over_inbound(lz: signer) acquires Channels, EventStore {
         setup(&lz);
 

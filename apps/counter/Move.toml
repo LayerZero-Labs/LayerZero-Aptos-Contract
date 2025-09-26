@@ -7,3 +7,5 @@ counter = "_"
 
 [dependencies]
 layerzero = { local = "../../layerzero" }
+layerzero_common = { local = "../../layerzero-common" }
+layerzero_view = { local = "../../layerzero-view" }

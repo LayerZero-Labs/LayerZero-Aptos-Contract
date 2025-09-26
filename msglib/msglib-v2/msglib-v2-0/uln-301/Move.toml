@@ -1,0 +1,43 @@
+[package]
+name = "uln_301"
+version = "1.0.0"
+authors = []
+
+[addresses]
+uln_301 = "_"
+
+executor_fee_lib_router_v1 = "_"
+
+# endpoint v1
+layerzero_common = "_"
+zro = "_"
+msglib_auth = "_"
+
+# endpoint v2
+fa_converter = "_"
+packet_converter = "_"
+endpoint_v2_common = "_"
+msglib_types = "_"
+treasury = '_'
+dvn_fee_lib_router_0 = '_'
+dvn_fee_lib_0 = '_'
+
+[dependencies]
+msglib_types = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/msglib/msglib_types" }
+endpoint_v2_common = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/endpoint_v2_common" }
+treasury = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/treasury" }
+dvn_fee_lib_router_0 = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/worker_peripherals/fee_lib_routers/dvn_fee_lib_router_0" }
+dvn_fee_lib_0 = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/worker_peripherals/fee_libs/dvn_fee_lib_0" }
+
+layerzero_common = { local = "../../../../interfaces-mock/layerzero-common" }
+zro = { local = "../../../../interfaces-mock/zro" }
+msglib_auth = { local = "../../../../interfaces-mock/msglib-auth" }
+
+fa_converter = { local = "../../../msglib-utils/fa-converter" }
+packet_converter = { local = "../../../msglib-utils/packet-converter" }
+
+executor_fee_lib_router_v1 = { local = "../../../executor-fee-lib-routers/router-v1" }
+
+AptosFramework = { git = "https://github.com/aptos-labs/aptos-framework.git", subdir = "aptos-framework", rev = "2c995bf668b2233825dde26137c3d1b076e99c22" }
+
+[dev-dependencies] 

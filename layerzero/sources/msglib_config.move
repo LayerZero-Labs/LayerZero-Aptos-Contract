@@ -233,7 +233,7 @@ module layerzero::msglib_config {
     use std::signer::address_of;
 
     #[test_only]
-    fun setup(lz: &signer, _auth: &signer, ua: &signer) acquires MsgLibRegistry, EventStore {
+    public fun setup(lz: &signer, _auth: &signer, ua: &signer) acquires MsgLibRegistry, EventStore {
         use aptos_framework::aptos_account;
 
         aptos_account::create_account(address_of(lz));
@@ -260,7 +260,7 @@ module layerzero::msglib_config {
     }
 
     #[test(lz = @layerzero, auth = @msglib_auth, ua = @test)]
-    #[expected_failure(abort_code = 0x80000)]
+    #[expected_failure(abort_code = 0x80000, location = Self)]
     fun test_reregister_msglib(lz: &signer, auth: &signer, ua: &signer)  acquires MsgLibRegistry, EventStore {
         setup(lz, auth, ua);
         register_msglib<TestMsgLibV1>(semver::build_version(1, 0));
@@ -291,21 +291,21 @@ module layerzero::msglib_config {
     }
 
     #[test(lz = @layerzero, auth = @msglib_auth, ua = @test)]
-    #[expected_failure(abort_code = 0x10001)]
+    #[expected_failure(abort_code = 0x10001, location = Self)]
     fun test_set_default_msglib_to_default_version(lz: &signer, auth: &signer, ua: &signer) acquires MsgLibConfig, MsgLibRegistry, EventStore {
         setup(lz, auth, ua);
         set_default_send_msglib(lz, 1, 0, 0);
     }
 
     #[test(lz = @layerzero, auth = @msglib_auth, ua = @test)]
-    #[expected_failure(abort_code = 0x10001)]
+    #[expected_failure(abort_code = 0x10001, location = Self)]
     fun test_set_default_msglib_to_invalid_version(lz: &signer, auth: &signer, ua: &signer) acquires MsgLibConfig, MsgLibRegistry, EventStore {
         setup(lz, auth, ua);
         set_default_send_msglib(lz, 1, 3, 0);
     }
 
     #[test(lz = @layerzero, auth = @msglib_auth, ua = @test)]
-    #[expected_failure(abort_code = 0x10002)]
+    #[expected_failure(abort_code = 0x10002, location = Self)]
     fun test_unset_default_msglib(lz: &signer, auth: &signer, ua: &signer) acquires MsgLibConfig, MsgLibRegistry, EventStore {
         setup(lz, auth, ua);
         get_send_msglib(address_of(ua), 1); // fail to get send msglib for default one unset
@@ -339,7 +339,7 @@ module layerzero::msglib_config {
     }
 
     #[test(lz = @layerzero, auth = @msglib_auth, ua = @test)]
-    #[expected_failure(abort_code = 0x10001)]
+    #[expected_failure(abort_code = 0x10001, location = Self)]
     fun test_ua_set_msglib_to_invalid_version(lz: &signer, auth: &signer, ua: &signer) acquires MsgLibConfig, MsgLibRegistry, EventStore {
         setup(lz, auth, ua);
         set_send_msglib<TestUa>(1, semver::build_version(3, 0));
@@ -364,7 +364,7 @@ module layerzero::msglib_config {
     }
 
     #[test(lz = @layerzero, auth = @msglib_auth, ua = @test)]
-    #[expected_failure(abort_code = 0x10004)]
+    #[expected_failure(abort_code = 0x10004, location = Self)]
     fun test_assert_invalid_msglib(lz: &signer, auth: &signer, ua: &signer) acquires MsgLibConfig, MsgLibRegistry, EventStore {
         setup(lz, auth, ua);
 

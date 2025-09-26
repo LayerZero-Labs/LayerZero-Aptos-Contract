@@ -1,0 +1,11 @@
+[package]
+name = "fa_converter"
+version = "0.0.1"
+authors = []
+
+[addresses]
+fa_converter = "_"
+
+[dependencies]
+endpoint_v2_common = { git = "https://github.com/LayerZero-Labs/LayerZero-v2", rev = "main", subdir = "packages/layerzero-v2/aptos/contracts/endpoint_v2_common" }
+AptosFramework = { git = "https://github.com/aptos-labs/aptos-framework.git", subdir = "aptos-framework", rev = "2c995bf668b2233825dde26137c3d1b076e99c22" }

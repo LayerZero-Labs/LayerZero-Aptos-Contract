@@ -414,7 +414,7 @@ module layerzero::endpoint {
     }
 
     #[test(lz = @layerzero)]
-    #[expected_failure(abort_code = 0x80003)]
+    #[expected_failure(abort_code = 0x80003, location = Self)]
     fun test_register_two_ua_in_same_address(lz: &signer) acquires UaRegistry {
         use aptos_framework::aptos_account;
 

@@ -1,0 +1,22 @@
+[package]
+name = "msglib_v2"
+version = "0.0.1"
+
+[addresses]
+msglib_v2 = "_"
+layerzero_common = "_"
+msglib_auth = "_"
+zro = "_"
+msglib_v2_1 = "_"
+msglib_v3 = "_"
+uln_301 = "_"
+msglib_routing_helper = "_"
+
+[dependencies]
+layerzero_common = { local = "../../../../layerzero-common" }
+msglib_auth = { local = "../../../msglib-auth" }
+zro = { local = "../../../../zro" }
+msglib_v2_1 = { local = "../../msglib-v2-1" }
+msglib_v3 = { local = "../../../msglib-v3" }
+
+uln_301 = { local = "../../../../interfaces-mock/uln-301-epv1" }

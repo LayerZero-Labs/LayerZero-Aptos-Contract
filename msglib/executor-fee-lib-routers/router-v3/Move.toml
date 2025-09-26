@@ -1,0 +1,11 @@
+[package]
+name = "executor_fee_lib_router_v3"
+version = "1.0.0"
+
+[addresses]
+executor_fee_lib_router_v3 = "_"
+
+[dependencies.AptosFramework]
+git = "https://github.com/aptos-labs/aptos-framework.git"
+rev = "2c995bf668b2233825dde26137c3d1b076e99c22"
+subdir = "aptos-framework" 
