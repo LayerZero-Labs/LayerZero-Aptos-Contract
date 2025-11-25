@@ -1,41 +1,44 @@
+# Move Package Configuration File (Move.toml)
 [package]
 name = "layerzero_apps"
 version = "0.0.1"
 
+# --- ADDRESS CONFIGURATION ---
+
+# Defined addresses for the compilation environment.
+# These addresses MUST be updated to the target environment (Testnet/Mainnet) 
+# before deployment or compilation for that target.
+
 [addresses]
-layerzero_apps = "_"
-layerzero_common = "_"
-msglib_auth = "_"
-msglib_v2 = "_"
-zro = "_"
-msglib_v1_1 = "_"
-executor_auth = "_"
-executor_v2 = "_"
-layerzero = "_"
+layerzero_apps = "0x2F972C173927006C83277B6E6AE38F83482EBA560F343D022F145979020D3621" # Example: Using Testnet 'layerzero_apps' address as default
+layerzero_common = "0x1759CC0D3161F1EB79F65847D4FEB9D1F74FB79014698A23B16B28B9CD4C37E3"
+msglib_auth = "0x1759CC0D3161F1EB79F65847D4FEB9D1F74FB79014698A23B16B28B9CD4C37E3"
+msglib_v2 = "0x1759CC0D3161F1EB79F65847D4FEB9D1F74FB79014698A23B16B28B9CD4C37E3"
+zro = "0x1759CC0D3161F1EB79F65847D4FEB9D1F74FB79014698A23B16B28B9CD4C37E3"
+msglib_v1_1 = "0x1759CC0D3161F1EB79F65847D4FEB9D1F74FB79014698A23B16B28B9CD4C37E3"
+executor_auth = "0x1759CC0D3161F1EB79F65847D4FEB9D1F74FB79014698A23B16B28B9CD4C37E3"
+executor_v2 = "0x1759CC0D3161F1EB79F65847D4FEB9D1F74FB79014698A23B16B28B9CD4C37E3"
+layerzero = "0x1759CC0D3161F1EB79F65847D4FEB9D1F74FB79014698A23B16B28B9CD4c37E3"
 
-# # Testnet Addresses
-#layerzero = "0x1759cc0d3161f1eb79f65847d4feb9d1f74fb79014698a23b16b28b9cd4c37e3"
-#layerzero_common = "0x1759cc0d3161f1eb79f65847d4feb9d1f74fb79014698a23b16b28b9cd4c37e3"
-#msglib_auth = "0x1759cc0d3161f1eb79f65847d4feb9d1f74fb79014698a23b16b28b9cd4c37e3"
-#msglib_v1_1 = "0x1759cc0d3161f1eb79f65847d4feb9d1f74fb79014698a23b16b28b9cd4c37e3"
-#msglib_v2 = "0x1759cc0d3161f1eb79f65847d4feb9d1f74fb79014698a23b16b28b9cd4c37e3"
-#zro = "0x1759cc0d3161f1eb79f65847d4feb9d1f74fb79014698a23b16b28b9cd4c37e3"
-#executor_auth = "0x1759cc0d3161f1eb79f65847d4feb9d1f74fb79014698a23b16b28b9cd4c37e3"
-#executor_v2 = "0x1759cc0d3161f1eb79f65847d4feb9d1f74fb79014698a23b16b28b9cd4c37e3"
+# --- ARCHIVED ADDRESSES FOR REFERENCE ---
 
-# Mainnet Addresses
-#layerzero = "0x54ad3d30af77b60d939ae356e6606de9a4da67583f02b962d2d3f2e481484e90"
-#layerzero_common = "0x54ad3d30af77b60d939ae356e6606de9a4da67583f02b962d2d3f2e481484e90"
-#msglib_auth = "0x54ad3d30af77b60d939ae356e6606de9a4da67583f02b962d2d3f2e481484e90"
-#msglib_v1_1 = "0x54ad3d30af77b60d939ae356e6606de9a4da67583f02b962d2d3f2e481484e90"
-#msglib_v2 = "0x54ad3d30af77b60d939ae356e6606de9a4da67583f02b962d2d3f2e481484e90"
-#zro = "0x54ad3d30af77b60d939ae356e6606de9a4da67583f02b962d2d3f2e481484e90"
-#executor_auth = "0x54ad3d30af77b60d939ae356e6606de9a4da67583f02b962d2d3f2e481484e90"
-#executor_v2 = "0x54ad3d30af77b60d939ae356e6606de9a4da67583f02b962d2d3f2e481484e90"
+# To switch environment, uncomment the relevant block and replace the addresses in the [addresses] section above.
+# It is recommended to use environment variables or a build script for robust multi-environment management.
 
+# # TESTNET Addresses
+# # layerzero = 0x1759cc0d3161f1eb79f65847d4feb9d1f74fb79014698a23b16b28b9cd4c37e3
+# # layerzero_common = 0x1759cc0d3161f1eb79f65847d4feb9d1f74fb79014698a23b16b28b9cd4c37e3
+# # ... (rest of Testnet addresses)
+# # layerzero_apps = 0x2f972c173927006c83277b6e6ae38f83482eba560f343d022f145979020d3621
 
-#layerzero_apps = "0x2f972c173927006c83277b6e6ae38f83482eba560f343d022f145979020d3621" // testnet
-#layerzero_apps = "0x43d8cad89263e6936921a0adb8d5d49f0e236c229460f01b14dca073114df2b9" // mainnet
+# # MAINNET Addresses
+# # layerzero = 0x54ad3d30af77b60d939ae356e6606de9a4da67583f02b962d2d3f2e481484e90
+# # layerzero_common = 0x54ad3d30af77b60d939ae356e6606de9a4da67583f02b962d2d3f2e481484e90
+# # ... (rest of Mainnet addresses)
+# # layerzero_apps = 0x43d8cad89263e6936921a0adb8d5d49f0e236c229460f01b14dca073114df2b9
 
+# --- PACKAGE DEPENDENCIES ---
+
+# Local dependency on the LayerZero core package.
 [dependencies]
 layerzero = { local = "../layerzero" }
