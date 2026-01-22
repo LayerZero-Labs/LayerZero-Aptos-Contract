@@ -185,7 +185,7 @@ module layerzero::uln_config {
         };
 
         if (table::contains(&ua_config_store.config, key)) {
-            // ua has initialize the configuration
+            // ua has initialized the configuration
             let ua_config = table::borrow(&ua_config_store.config, key);
             merge(ua_config, default_config)
         } else {

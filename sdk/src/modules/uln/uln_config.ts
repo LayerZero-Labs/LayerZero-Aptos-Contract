@@ -140,7 +140,7 @@ export class UlnConfig {
             }
         }
 
-        // address type in move are reutrned as short string
+        // address type in move are returned as short string
         mergedConfig.oracle = fullAddress(mergedConfig.oracle).toString()
         mergedConfig.relayer = fullAddress(mergedConfig.relayer).toString()
         mergedConfig.inbound_confirmations = BigInt(mergedConfig.inbound_confirmations)

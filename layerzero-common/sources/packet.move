@@ -4,7 +4,7 @@ module layerzero_common::packet {
     use layerzero_common::serde;
     use layerzero_common::utils::vector_slice;
 
-    // basic packet structure for a data packet {channel_id, nocne and payload}
+    // basic packet structure for a data packet {channel_id, nonce and payload}
     struct Packet has drop, key, store, copy {
         src_chain_id: u64, // u16
         src_address: vector<u8>,
