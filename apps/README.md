@@ -14,7 +14,7 @@ public fun register_ua<UA>(account: &signer): UaCapability<UA>
 ```
 
 The `UA` type is an identifier of your application. You can use any type as `UA`, e.g. `0x1::MyApp::MyApp` as UA.
-Note: only one UA is allowed per address. That means there won't two `UA` types share the same address.
+Note: only one UA is allowed per address. That means there won't be two `UA` types sharing the same address.
 
 When calling `register_ua()`, you will get a `UaCapability<UA>` as return. It is the resources for authenticating any LayerZero functions, such as sending messages and setting configurations. 
 
@@ -89,7 +89,7 @@ public fun lz_receive_types(src_chain_id: u64, src_address: vector<u8>, payload:
 
 ### Blocking Mode
 
-Layerzero is by default BLOCKING, which means if the message payload fails in the lz_receive function,
+LayerZero is by default BLOCKING, which means if the message payload fails in the lz_receive function,
 your UA will be blocked and cannot receive next messages from that path until the failed message is received successfully.
 For that case, you may have to drop the message or store it and retry later. We provide [LzApp Modules](#LzApp-Modules) to help you handle it.
 
